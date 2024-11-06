@@ -1,31 +1,31 @@
-<!-- resources/views/Modules/GestionArticle/create.blade.php -->
+<!-- resources/views/Modules/GestionCategories/create.blade.php -->
+
 @extends('layouts.app')
 
 @section('content')
-    <h1>Créer un Article</h1>
+    <div class="container">
+        <h1>Ajouter une nouvelle catégorie</h1>
 
-    <form action="{{ route('articles.store') }}" method="POST">
-        @csrf
-        <div class="mb-3">
-            <label for="title" class="form-label">Titre</label>
-            <input type="text" class="form-control" id="title" name="title" required>
-        </div>
+        <form action="{{ route('categories.store') }}" method="POST">
+            @csrf
 
-        <div class="mb-3">
-            <label for="content" class="form-label">Contenu</label>
-            <textarea class="form-control" id="content" name="content" rows="4" required></textarea>
-        </div>
+            <div class="form-group">
+                <label for="name">Nom de la catégorie</label>
+                <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name') }}" required>
+                @error('name')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
 
-        <div class="mb-3">
-            <label for="category_id" class="form-label">Catégorie</label>
-            <select class="form-control" id="category_id" name="category_id" required>
-                <option value="">Sélectionner une catégorie</option>
-                @foreach($categories as $category)
-                    <option value="{{ $category->id }}">{{ $category->name }}</option>
-                @endforeach
-            </select>
-        </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description">{{ old('description') }}</textarea>
+                @error('description')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
 
-        <button type="submit" class="btn btn-primary">Créer l'Article</button>
-    </form>
+            <button type="submit" class="btn btn-success mt-3">Ajouter la catégorie</button>
+        </form>
+    </div>
 @endsection

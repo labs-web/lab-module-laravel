@@ -15,8 +15,11 @@ class ArticleController extends Controller
         // Récupérer tous les articles avec leur catégorie associée
         $articles = Article::with('category')->paginate(10);
 
+         // Récupérer toutes les catégories
+         $categories = Category::all();
+
         // Retourner la vue avec les articles
-        return view('Modules.GestionArticle.index', compact('articles'));
+        return view('GestionArticle::index', compact('articles','categories'));
     }
 
     // Afficher le formulaire pour créer un article
@@ -26,7 +29,7 @@ class ArticleController extends Controller
         $categories = Category::all();
 
         // Retourner la vue avec les catégories disponibles pour le formulaire
-        return view('Modules.GestionArticle.create', compact('categories'));
+        return view('GestionArticle::create', compact('categories'));
     }
 
     // Sauvegarder un nouvel article
@@ -60,7 +63,7 @@ class ArticleController extends Controller
         $categories = Category::all();
 
         // Retourner la vue avec l'article à éditer et les catégories
-        return view('Modules.GestionArticle.edit', compact('article', 'categories'));
+        return view('GestionArticle::edit', compact('article', 'categories'));
     }
 
     // Mettre à jour un article existant

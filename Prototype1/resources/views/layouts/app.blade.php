@@ -6,7 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ config('app.name', 'Laravel') }}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    @vite('resources/css/app.css')
+
+
+    <!-- TODO : 
+     Normalement les script doit être importer en bas de page.
+     Mais,lLes script doit être charger avant les view ou migrer le code 
+    javascript des view dans des fichiers Javascript à importer en base de page 
+    -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    @vite('resources/js/app.js')
+
+
 </head>
 <body>
 
@@ -32,12 +45,18 @@
         </div>
     </nav>
 
-    <div class="container mt-4">
-        @yield('content')
+    <!-- Loader -->
+    <div id="loader">
+    <img src="{{ asset('images/loader.gif') }}" alt="Chargement en cours...">
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
-    <script src="{{ asset('js/app.js') }}"></script>
+    <div class="container mt-4">
+        @yield('content')
+
+ 
+
+
+    </div>
+
 </body>
 </html>
