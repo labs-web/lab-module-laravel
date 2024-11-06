@@ -19,5 +19,14 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
+
+        // Appelez les seeders des modules
+        // TODO : Ajouter pour chaque module une classe global par module qui va gérer les seeders de module
+        $this->call([
+            \App\Modules\GestionCategories\Seeders\CategorySeeder::class,
+            \App\Modules\GestionArticle\Seeders\ArticleSeeder::class,
+        ]);
+
+
     }
 }

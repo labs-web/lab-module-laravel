@@ -2,99 +2,126 @@
 
 namespace App\Modules\GestionArticle\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Modules\GestionArticle\Models\Article;
+use App\Modules\GestionCategories\Models\Category;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class ArticleController extends Controller
 {
-    /**
-     * Affiche la liste des articles.
-     */
-    public function index()
+    // Afficher tous les articles
+    public function index(Request $request)
     {
-        $articles = Article::all(); // Récupère tous les articles
-        return view('GestionArticle::index', compact('articles'));
+        // Récupérer tous les articles avec leur catégorie associée
+        $articles = Article::with('category')->paginate(10);
+
+        // Retourner la vue avec les articles
+        return view('Modules.GestionArticle.index', compact('articles'));
     }
 
-    /**
-     * Affiche le formulaire de création d'un nouvel article.
-     */
+    // Afficher le formulaire pour créer un article
     public function create()
     {
-        return view('GestionArticle::create');
+        // Récupérer toutes les catégories
+        $categories = Category::all();
+
+        // Retourner la vue avec les catégories disponibles pour le formulaire
+        return view('Modules.GestionArticle.create', compact('categories'));
     }
 
-    /**
-     * Enregistre un nouvel article dans la base de données.
-     */
+    // Sauvegarder un nouvel article
     public function store(Request $request)
     {
-        // Validation des données
-        $request->validate([
+        // Valider les données du formulaire
+        $validated = $request->validate([
             'title' => 'required|string|max:255',
             'content' => 'required|string',
+            'category_id' => 'required|exists:categories,id',
         ]);
 
-        // Création de l'article
+        // Créer un nouvel article
         Article::create([
-            'title' => $request->input('title'),
-            'content' => $request->input('content'),
+            'title' => $validated['title'],
+            'content' => $validated['content'],
+            'category_id' => $validated['category_id'],
         ]);
 
-        // Redirection avec un message de succès
-        return redirect()->route('articles.index')->with('success', 'Article créé avec succès.');
+        // Rediriger avec un message de succès
+        return redirect()->route('articles.index')->with('success', 'Article ajouté avec succès.');
     }
 
-    /**
-     * Affiche les détails d'un article spécifique.
-     */
-    public function show($id)
-    {
-        $article = Article::findOrFail($id); // Récupère l'article ou renvoie une erreur 404
-        return view('GestionArticle::show', compact('article'));
-    }
-
-    /**
-     * Affiche le formulaire d'édition d'un article existant.
-     */
+    // Afficher le formulaire pour éditer un article
     public function edit($id)
     {
-        $article = Article::findOrFail($id); // Récupère l'article ou renvoie une erreur 404
-        return view('GestionArticle::edit', compact('article'));
+        // Trouver l'article à éditer
+        $article = Article::findOrFail($id);
+
+        // Récupérer toutes les catégories
+        $categories = Category::all();
+
+        // Retourner la vue avec l'article à éditer et les catégories
+        return view('Modules.GestionArticle.edit', compact('article', 'categories'));
     }
 
-    /**
-     * Met à jour un article existant dans la base de données.
-     */
+    // Mettre à jour un article existant
     public function update(Request $request, $id)
     {
-        // Validation des données
-        $request->validate([
+        // Valider les données du formulaire
+        $validated = $request->validate([
             'title' => 'required|string|max:255',
             'content' => 'required|string',
+            'category_id' => 'required|exists:categories,id',
         ]);
 
-        // Mise à jour de l'article
+        // Trouver l'article à mettre à jour
         $article = Article::findOrFail($id);
+
+        // Mettre à jour l'article
         $article->update([
-            'title' => $request->input('title'),
-            'content' => $request->input('content'),
+            'title' => $validated['title'],
+            'content' => $validated['content'],
+            'category_id' => $validated['category_id'],
         ]);
 
-        // Redirection avec un message de succès
+        // Rediriger avec un message de succès
         return redirect()->route('articles.index')->with('success', 'Article mis à jour avec succès.');
     }
 
-    /**
-     * Supprime un article de la base de données.
-     */
+    // Supprimer un article
     public function destroy($id)
     {
-        $article = Article::findOrFail($id); // Récupère l'article ou renvoie une erreur 404
+        // Trouver l'article à supprimer
+        $article = Article::findOrFail($id);
+
+        // Supprimer l'article
         $article->delete();
 
-        // Redirection avec un message de succès
+        // Rediriger avec un message de succès
         return redirect()->route('articles.index')->with('success', 'Article supprimé avec succès.');
+    }
+
+    // Recherche des articles par titre ou contenu
+    public function search(Request $request)
+    {
+        $query = $request->get('query');
+        $articles = Article::where('title', 'like', '%' . $query . '%')
+                           ->orWhere('content', 'like', '%' . $query . '%')
+                           ->with('category')
+                           ->get();
+
+        // Retourner les articles filtrés en JSON pour l'Ajax
+        return response()->json($articles);
+    }
+
+    // Filtrer les articles par catégorie
+    public function filterByCategory(Request $request)
+    {
+        $category_id = $request->get('category_id');
+        $articles = Article::where('category_id', $category_id)
+                           ->with('category')
+                           ->get();
+
+        // Retourner les articles filtrés en JSON pour l'Ajax
+        return response()->json($articles);
     }
 }
