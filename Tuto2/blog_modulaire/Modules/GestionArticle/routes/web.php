@@ -15,5 +15,5 @@ use Modules\GestionArticle\Http\Controllers\GestionArticleController;
 */
 
 Route::group([], function () {
-    Route::resource('gestionarticle', GestionArticleController::class)->names('gestionarticle');
+    Route::resource('articles', GestionArticleController::class)->names('articles');
 });

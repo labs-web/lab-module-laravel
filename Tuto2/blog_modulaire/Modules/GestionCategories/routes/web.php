@@ -15,5 +15,5 @@ use Modules\GestionCategories\Http\Controllers\GestionCategoriesController;
 */
 
 Route::group([], function () {
-    Route::resource('gestioncategories', GestionCategoriesController::class)->names('gestioncategories');
+    Route::resource('categories', GestionCategoriesController::class)->names('categories');
 });

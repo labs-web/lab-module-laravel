@@ -150,14 +150,9 @@ Route::resource('categories', CategoryController::class);
 
 ## Étape 6 : Charger les routes des modules dans `web.php`
 
-Dans `routes/web.php`, importez les routes de chaque module en ajoutant les lignes suivantes :
+Il est charger dans : 
 
-```php
-use Nwidart\Modules\Facades\Module;
-
-Module::load('GestionArticle', 'Routes/web.php');
-Module::load('GestionCategories', 'Routes/web.php');
-```
+blog_modulaire\Modules\GestionArticle\app\Providers\RouteServiceProvider.php
 
 ## Étape 7 : Créer les contrôleurs pour les modules
 
