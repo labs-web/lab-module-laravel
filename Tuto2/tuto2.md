@@ -74,29 +74,7 @@ Modules/
 
 ## Étape 4 : Configurer les modèles et les migrations
 
-### GestionArticle
 
-Dans le module « GestionArticle », créez le modèle `Article` et configurez la migration correspondante :
-
-```bash
-php artisan module:make-model Article GestionArticle -m
-```
-
-Cela crée un modèle `Article` et une migration dans `Modules/GestionArticle/Database/Migrations/`. Modifiez la migration pour y ajouter les champs nécessaires :
-
-```php
-// Modules/GestionArticle/Database/Migrations/XXXX_XX_XX_create_articles_table.php
-public function up()
-{
-    Schema::create('articles', function (Blueprint $table) {
-        $table->id();
-        $table->string('title');
-        $table->text('content');
-        $table->foreignId('category_id')->constrained('categories');
-        $table->timestamps();
-    });
-}
-```
 
 ### GestionCategories
 
@@ -125,7 +103,29 @@ Ensuite, exécutez les migrations :
 ```bash
 php artisan migrate
 ```
+### GestionArticle
 
+Dans le module « GestionArticle », créez le modèle `Article` et configurez la migration correspondante :
+
+```bash
+php artisan module:make-model Article GestionArticle -m
+```
+
+Cela crée un modèle `Article` et une migration dans `Modules/GestionArticle/Database/Migrations/`. Modifiez la migration pour y ajouter les champs nécessaires :
+
+```php
+// Modules/GestionArticle/Database/Migrations/XXXX_XX_XX_create_articles_table.php
+public function up()
+{
+    Schema::create('articles', function (Blueprint $table) {
+        $table->id();
+        $table->string('title');
+        $table->text('content');
+        $table->foreignId('category_id')->constrained('categories');
+        $table->timestamps();
+    });
+}
+```
 ## Étape 5 : Configurer les routes pour chaque module
 
 ### GestionArticle
