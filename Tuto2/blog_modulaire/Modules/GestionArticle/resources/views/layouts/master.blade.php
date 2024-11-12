@@ -17,13 +17,11 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
-    {{-- Vite CSS --}}
-    {{-- {{ module_vite('build-gestionarticle', 'resources/assets/sass/app.scss') }} --}}
+    @vite('resources/assets/sass/app.scss') 
 </head>
 
 <body>
     @yield('content')
 
-    {{-- Vite JS --}}
-    {{-- {{ module_vite('build-gestionarticle', 'resources/assets/js/app.js') }} --}}
+    @module_vite('build-gestionarticle', 'resources/assets/js/app.js')
 </body>
