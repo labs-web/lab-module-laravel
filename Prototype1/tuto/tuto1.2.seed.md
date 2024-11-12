@@ -17,7 +17,7 @@ php artisan make:seeder Modules/GestionCategories/CategorySeeder
 ```php
 // app/Modules/GestionCategories/Seeders/CategorySeeder.php
 
-namespace App\Modules\GestionCategories\Seeders;
+namespace Modules\GestionCategories\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -62,7 +62,7 @@ php artisan make:seeder Modules/GestionArticle/ArticleSeeder
 ```php
 // app/Modules/GestionArticle/Seeders/ArticleSeeder.php
 
-namespace App\Modules\GestionArticle\Seeders;
+namespace Modules\GestionArticle\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;

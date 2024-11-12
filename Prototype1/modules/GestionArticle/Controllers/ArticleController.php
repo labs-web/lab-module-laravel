@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\GestionArticle\Controllers;
+namespace Modules\GestionArticle\Controllers;
 
 use App\Modules\GestionArticle\Models\Article;
 use App\Modules\GestionCategories\Models\Category;

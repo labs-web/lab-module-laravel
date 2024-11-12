@@ -2,7 +2,7 @@
 
 // app/Modules/GestionArticle/Seeders/ArticleSeeder.php
 
-namespace App\Modules\GestionArticle\Seeders;
+namespace Modules\GestionArticle\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;

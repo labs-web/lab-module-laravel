@@ -21,11 +21,11 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         // Alias pour les vues 
-        View::addNamespace('GestionArticle', base_path('app/Modules/GestionArticle/Views'));
-        View::addNamespace('GestionCategories', base_path('app/Modules/GestionCategories/Views'));
+        View::addNamespace('GestionArticle', base_path('modules/GestionArticle/Views'));
+        View::addNamespace('GestionCategories', base_path('modules/GestionCategories/Views'));
 
-        // Ajoutez cette ligne pour charger les migrations de chaque module
-        $this->loadMigrationsFrom(app_path('Modules/GestionCategories/Migrations'));
-        $this->loadMigrationsFrom(app_path('Modules/GestionArticle/Migrations'));
+        // charger les migrations de chaque module
+        $this->loadMigrationsFrom(base_path('modules/GestionCategories/Migrations'));
+        $this->loadMigrationsFrom(base_path('modules/GestionArticle/Migrations'));
     }
 }

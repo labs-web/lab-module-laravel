@@ -114,7 +114,7 @@ Dans `app/Modules/GestionCategories/Controllers/CategoryController.php`, ajoutez
 ```php
 // app/Modules/GestionCategories/Controllers/CategoryController.php
 
-namespace App\Modules\GestionCategories\Controllers;
+namespace Modules\GestionCategories\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -154,7 +154,7 @@ Dans `app/Modules/GestionArticle/Controllers/ArticleController.php`, ajoutez ce 
 ```php
 // app/Modules/GestionArticle/Controllers/ArticleController.php
 
-namespace App\Modules\GestionArticle\Controllers;
+namespace Modules\GestionArticle\Controllers;
 
 use App\Models\Article;
 use App\Models\Category;
