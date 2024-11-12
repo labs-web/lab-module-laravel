@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Modules\PkgArticles\Database\Seeders\ArticleSeeder;
+use Modules\PkgCategories\Database\Seeders\CategorySeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -23,8 +25,8 @@ class DatabaseSeeder extends Seeder
         // Appelez les seeders des modules
         // TODO : Ajouter pour chaque module une classe global par module qui va gérer les seeders de module
         $this->call([
-            \Modules\PkgCategories\Seeders\CategorySeeder::class,
-            \Modules\PkgArticles\Seeders\ArticleSeeder::class,
+            CategorySeeder::class,
+            ArticleSeeder::class,
         ]);
 
 

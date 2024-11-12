@@ -2,7 +2,7 @@
 
 // app/Modules/pkg_articles/Seeders/ArticleSeeder.php
 
-namespace Modules\PkgArticles\Seeders;
+namespace Modules\PkgArticles\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;

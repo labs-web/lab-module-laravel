@@ -1,8 +1,6 @@
 <?php
 
-// app/Modules/GestionCategories/Seeders/CategorySeeder.php
-
-namespace Modules\PkgCategories\Seeders;
+namespace Modules\PkgCategories\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;

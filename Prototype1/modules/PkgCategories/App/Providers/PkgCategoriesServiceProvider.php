@@ -1,10 +1,10 @@
 <?php
 
-namespace Modules\PkgCategory\App\Providers;
+namespace Modules\PkgCategories\App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-class PkgCategoryServiceProvider extends ServiceProvider
+class PkgCategoriesServiceProvider extends ServiceProvider
 {
     /**
      * Enregistrer les services dans l'application.
