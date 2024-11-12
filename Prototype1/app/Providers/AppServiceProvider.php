@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
+use Modules\PkgArticles\App\Providers\PkgArticlesServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,8 +14,8 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         // Enregistrement des ServiceProviders pour les modules pkg_articles et pkg_categories
-        $this->app->register(\Modules\PkgArticles\Providers\ArticleServiceProvider::class);
-        $this->app->register(\Modules\PkgCategories\Providers\CategoryServiceProvider::class);
+        $this->app->register(PkgArticlesServiceProvider::class);
+        $this->app->register(\Modules\PkgCategories\Providers\PkgCategoryServiceProvider::class);
     }
     
 
