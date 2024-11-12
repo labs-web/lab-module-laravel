@@ -14,23 +14,75 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        // Enregistrement des ServiceProviders pour les modules pkg_articles et pkg_categories
-        $this->app->register(PkgArticlesServiceProvider::class);
-        $this->app->register(PkgCategoriesServiceProvider::class);
+        // Enregistrement statique des ServiceProviders 
+        // $this->app->register(PkgArticlesServiceProvider::class);
+        // $this->app->register(PkgCategoriesServiceProvider::class);
+
+        // Charger tous les ServiceProviders des modules
+        $this->loadModuleServiceProviders();
     }
     
 
-    /**
-     * Bootstrap any application services.
-     */
     public function boot(): void
     {
-        // // Alias pour les vues 
-        // View::addNamespace('pkg_articles', base_path('modules/pkg_articles/Views'));
-        // View::addNamespace('GestionCategories', base_path('modules/GestionCategories/Views'));
 
-        // // charger les migrations de chaque module
-        // $this->loadMigrationsFrom(base_path('modules/GestionCategories/Migrations'));
-        // $this->loadMigrationsFrom(base_path('modules/pkg_articles/Migrations'));
     }
+
+
+/**
+     * Charger les ServiceProviders dynamiquement depuis les modules.
+     *
+     * @return void
+     */
+    protected function loadModuleServiceProviders()
+    {
+        // Définir le chemin vers le dossier contenant les ServiceProviders des modules
+        $moduleProvidersPath = base_path('modules'); // Path du dossier des modules
+        
+      
+        // Récupérer tous les fichiers de type ServiceProvider dans ce dossier
+        $providerFiles = glob($moduleProvidersPath . '/*/App/Providers/*ServiceProvider.php');
+
+      
+       
+        foreach ($providerFiles as $providerFile) {
+            // Inclure le fichier PHP du ServiceProvider
+            $providerClass = $this->getProviderClass($providerFile);
+
+        
+            // Vérifier si la classe existe, puis l'enregistrer
+            if (class_exists($providerClass)) {
+                
+                $this->app->register($providerClass);
+                
+            }
+        }
+    }
+
+    /**
+     * Récupérer la classe du ServiceProvider à partir du fichier PHP.
+     *
+     * @param string $file
+     * @return string
+     */
+    protected function getProviderClass(string $file): string
+    {
+        
+        // Transformer le chemin de fichier en nom de classe PHP avec namespace
+        $relativePath = str_replace(base_path(), '', $file); // Obtenir le chemin relatif
+       
+        $relativePath = str_replace('/', '\\', $relativePath); // Convertir les / en \
+        $relativePath = trim($relativePath, '\\'); // Supprimer les \ en trop
+        $relativePath = str_replace('.php', '', $relativePath); 
+        // Remplacer uniquement "module" par "Module" au début du chemin
+       
+        if (substr($relativePath, 0, 7) === 'modules') {
+             $relativePath = 'Modules' . substr($relativePath, 7);
+        }
+    
+        // Exemple : Modules\PkgArticles\App\Providers\PkgArticlesServiceProvider
+        return  $relativePath;
+    }
+
+    
 }
