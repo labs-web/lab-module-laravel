@@ -1,0 +1,30 @@
+{
+    "name": "nwidart/gestionarticle",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\GestionArticle\\": "app/",
+            "Modules\\GestionArticle\\Database\\Factories\\": "database/factories/",
+            "Modules\\GestionArticle\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\GestionArticle\\Tests\\": "tests/"
+        }
+    }
+}

@@ -35,6 +35,23 @@ php artisan module:make GestionArticle
 php artisan module:make GestionCategories
 ```
 
+
+### Autoloading
+By default, the module classes are not loaded automatically. You can autoload your modules by adding merge-plugin to the extra section:
+
+"extra": {
+    "laravel": {
+        "dont-discover": []
+    },
+    "merge-plugin": {
+        "include": [
+            "Modules/*/composer.json"
+        ]
+    }
+},
+Tip: don't forget to run composer dump-autoload afterwards.
+
+
 Ces commandes génèrent un répertoire pour chaque module dans le dossier `Modules/` avec la structure suivante :
 
 ```

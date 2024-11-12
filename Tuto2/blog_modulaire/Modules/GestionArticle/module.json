@@ -1,0 +1,11 @@
+{
+    "name": "GestionArticle",
+    "alias": "gestionarticle",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\GestionArticle\\Providers\\GestionArticleServiceProvider"
+    ],
+    "files": []
+}
