@@ -154,7 +154,7 @@ Dans `app/Modules/GestionArticle/Controllers/ArticleController.php`, ajoutez ce 
 ```php
 // app/Modules/GestionArticle/Controllers/ArticleController.php
 
-namespace Modules\GestionArticle\Controllers;
+namespace Modules\pkg_articles\Controllers;
 
 use App\Models\Article;
 use App\Models\Category;
@@ -286,7 +286,7 @@ Dans `app/Modules/GestionCategories/Routes/web.php` :
 ```php
 // app/Modules/GestionCategories/Routes/web.php
 
-use App\Modules\GestionCategories\Controllers\CategoryController;
+use Modules\GestionCategories\Controllers\CategoryController;
 
 Route::prefix('categories')->group(function () {
     Route::get('/', [CategoryController::class, 'index'])->name('categories.index');
@@ -302,7 +302,7 @@ Dans `app/Modules/GestionArticle/Routes/web.php` :
 ```php
 // app/Modules/GestionArticle/Routes/web.php
 
-use App\Modules\GestionArticle\Controllers\ArticleController;
+use Modules\pkg_articles\Controllers\ArticleController;
 
 Route::prefix('articles')->group(function () {
     Route::get('/', [ArticleController::class, 'index'])->name('articles.index');

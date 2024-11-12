@@ -75,7 +75,7 @@ protected function mapModuleRoutes()
 Les contrôleurs pour chaque module sont organisés dans `modules/ModuleName/Controllers/`. Assurez-vous que chaque contrôleur utilise l’espace de noms correct, par exemple :
 
 ```php
-namespace Modules\GestionArticle\Controllers;
+namespace Modules\pkg_articles\Controllers;
 
 use App\Http\Controllers\Controller;
 
@@ -93,7 +93,7 @@ class ArticleController extends Controller
 Pour les modèles, suivez la même structure dans `modules/ModuleName/Models/`. Assurez-vous d’indiquer le bon espace de noms :
 
 ```php
-namespace Modules\GestionArticle\Models;
+namespace Modules\pkg_articles\Models;
 
 use Illuminate\Database\Eloquent\Model;
 

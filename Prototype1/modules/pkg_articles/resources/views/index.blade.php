@@ -1,4 +1,4 @@
-<!-- resources/views/Modules/GestionArticle/index.blade.php -->
+<!-- resources/views/Modules/pkg_articles/index.blade.php -->
 @extends('layouts.app')
 
 @section('content')

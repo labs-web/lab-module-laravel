@@ -1,14 +1,14 @@
 <?php
 
-// app/Modules/GestionArticle/Seeders/ArticleSeeder.php
+// app/Modules/pkg_articles/Seeders/ArticleSeeder.php
 
-namespace Modules\GestionArticle\Seeders;
+namespace Modules\PkgArticles\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Faker\Factory as Faker;
 
-use App\Modules\GestionCategories\Models\Category as ModelsCategory;  // Importer le modèle Category
+use Modules\PkgCategories\Models\Category as ModelsCategory;  // Importer le modèle Category
 
 class ArticleSeeder extends Seeder
 {

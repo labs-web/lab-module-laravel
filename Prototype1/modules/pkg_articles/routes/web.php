@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Modules\GestionArticle\Controllers\ArticleController;
+use Modules\PkgArticles\Controllers\ArticleController;
 
 Route::prefix('articles')->group(function () {
     Route::get('/', [ArticleController::class, 'index'])->name('articles.index');

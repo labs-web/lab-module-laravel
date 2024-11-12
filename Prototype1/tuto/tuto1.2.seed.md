@@ -62,7 +62,7 @@ php artisan make:seeder Modules/GestionArticle/ArticleSeeder
 ```php
 // app/Modules/GestionArticle/Seeders/ArticleSeeder.php
 
-namespace Modules\GestionArticle\Seeders;
+namespace Modules\pkg_articles\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -116,8 +116,8 @@ class DatabaseSeeder extends Seeder
     {
         // Appelez les seeders des modules
         $this->call([
-            \App\Modules\GestionCategories\Seeders\CategorySeeder::class,
-            \App\Modules\GestionArticle\Seeders\ArticleSeeder::class,
+            \Modules\GestionCategories\Seeders\CategorySeeder::class,
+            \Modules\pkg_articles\Seeders\ArticleSeeder::class,
         ]);
     }
 }

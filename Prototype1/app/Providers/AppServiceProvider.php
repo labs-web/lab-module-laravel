@@ -10,10 +10,13 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Register any application services.
      */
-    public function register(): void
+    public function register()
     {
-        //
+        // Enregistrement des ServiceProviders pour les modules pkg_articles et pkg_categories
+        $this->app->register(\Modules\PkgArticles\Providers\ArticleServiceProvider::class);
+        $this->app->register(\Modules\PkgCategories\Providers\CategoryServiceProvider::class);
     }
+    
 
     /**
      * Bootstrap any application services.
@@ -21,11 +24,11 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         // Alias pour les vues 
-        View::addNamespace('GestionArticle', base_path('modules/GestionArticle/Views'));
+        View::addNamespace('pkg_articles', base_path('modules/pkg_articles/Views'));
         View::addNamespace('GestionCategories', base_path('modules/GestionCategories/Views'));
 
         // charger les migrations de chaque module
         $this->loadMigrationsFrom(base_path('modules/GestionCategories/Migrations'));
-        $this->loadMigrationsFrom(base_path('modules/GestionArticle/Migrations'));
+        $this->loadMigrationsFrom(base_path('modules/pkg_articles/Migrations'));
     }
 }

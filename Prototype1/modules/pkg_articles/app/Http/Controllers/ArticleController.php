@@ -1,9 +1,9 @@
 <?php
 
-namespace Modules\GestionArticle\Controllers;
+namespace Modules\PkgArticles\Controllers;
 
-use App\Modules\GestionArticle\Models\Article;
-use App\Modules\GestionCategories\Models\Category;
+use Modules\PkgArticles\Models\Article;
+use Modules\PkgCategories\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -19,7 +19,7 @@ class ArticleController extends Controller
          $categories = Category::all();
 
         // Retourner la vue avec les articles
-        return view('GestionArticle::index', compact('articles','categories'));
+        return view('pkg_articles::index', compact('articles','categories'));
     }
 
     // Afficher le formulaire pour créer un article
@@ -29,7 +29,7 @@ class ArticleController extends Controller
         $categories = Category::all();
 
         // Retourner la vue avec les catégories disponibles pour le formulaire
-        return view('GestionArticle::create', compact('categories'));
+        return view('pkg_articles::create', compact('categories'));
     }
 
     // Sauvegarder un nouvel article
@@ -63,7 +63,7 @@ class ArticleController extends Controller
         $categories = Category::all();
 
         // Retourner la vue avec l'article à éditer et les catégories
-        return view('GestionArticle::edit', compact('article', 'categories'));
+        return view('pkg_articles::edit', compact('article', 'categories'));
     }
 
     // Mettre à jour un article existant

@@ -2,7 +2,7 @@
 
 // app/Modules/GestionCategories/Seeders/CategorySeeder.php
 
-namespace Modules\GestionCategories\Seeders;
+namespace Modules\PkgCategories\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\GestionArticle\Models;
+namespace Modules\PkgArticles\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,6 +10,6 @@ class Article extends Model
 
     public function category()
     {
-        return $this->belongsTo('App\Modules\GestionCategories\Models\Category', 'category_id');
+        return $this->belongsTo('Modules\PkgCategories\Models\Category', 'category_id');
     }
 }

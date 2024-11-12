@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\GestionCategories\Models;
+namespace Modules\PkgCategories\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -11,6 +11,6 @@ class Category extends Model
     // Relation One-to-Many : une catégorie a plusieurs articles
     public function articles()
     {
-        return $this->hasMany('App\Modules\GestionArticle\Models\Article', 'category_id');
+        return $this->hasMany('Modules\PkgArticles\Models\Article', 'category_id');
     }
 }

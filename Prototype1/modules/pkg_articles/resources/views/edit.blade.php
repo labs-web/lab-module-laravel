@@ -1,4 +1,4 @@
-<!-- resources/views/Modules/GestionArticle/edit.blade.php -->
+<!-- resources/views/Modules/pkg_articles/edit.blade.php -->
 @extends('layouts.app')
 
 @section('content')

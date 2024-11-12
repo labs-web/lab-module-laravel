@@ -23,8 +23,8 @@ class DatabaseSeeder extends Seeder
         // Appelez les seeders des modules
         // TODO : Ajouter pour chaque module une classe global par module qui va gérer les seeders de module
         $this->call([
-            \App\Modules\GestionCategories\Seeders\CategorySeeder::class,
-            \App\Modules\GestionArticle\Seeders\ArticleSeeder::class,
+            \Modules\PkgCategories\Seeders\CategorySeeder::class,
+            \Modules\PkgArticles\Seeders\ArticleSeeder::class,
         ]);
 
 
